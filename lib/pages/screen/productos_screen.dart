@@ -2,40 +2,64 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/services/product_service.dart';
 import 'package:shop/models/product_model.dart';
-class ProductosScreen extends StatelessWidget {
-  const ProductosScreen({super.key});
+
+class Productos_Screen extends StatelessWidget {
+  const Productos_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Productos'),
-      ),
- 
-      body: FutureBuilder <List<Product>>(
-        future: ProductService().getProducts().then((data) => data.map((item) => Product.fromJson(item)).toList()),
-        builder: (context, snapshot) {
+     
+      body: FutureBuilder<List<Product>>(
+        future: ProductService()
+            .getProducts()
+            .then((data) => data.map((e) => Product.fromJson(e)).toList()),
+        builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No products found'));
-          } else {
-            final products = snapshot.data!;
+          }
+
+          if (snapshot.hasError) {
+            return Center(child: Text(snapshot.error.toString()));
+          }
+
+          if (snapshot.hasData) {
+            final List<Product> data = snapshot.data!;
+
             return ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                final product = products[index];
+              itemCount: data.length,
+              itemBuilder: (_, index) {
+                final product = data[index];
+
                 return ListTile(
-                  leading: Image.network(product.image, width: 50, height: 50),
+                  leading: ClipRRect(
+  borderRadius: BorderRadius.circular(8),
+  child: product.images.isNotEmpty
+      ? Image.network(
+          product.images.first,
+          width: 60,
+          height: 60,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return const Icon(Icons.broken_image, size: 60);
+          },
+        )
+      : const Icon(Icons.image, size: 60),
+),
                   title: Text(product.title),
                   subtitle: Text('\$${product.price}'),
-                  onTap: () => context.push('/product/${product.id}'),
+                  onTap: () {
+                    context.go(
+                      '/product/${product.id}',
+                      extra: product.title,
+                    );
+                  },
                 );
               },
             );
           }
+
+          return const SizedBox();
         },
       ),
     );

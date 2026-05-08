@@ -3,7 +3,7 @@ class ProductService {
   final Dio _dio=Dio();
   Future<List<dynamic>> getProducts() async {
     try {
-      final response = await _dio.get('https://fakestoreapi.com/products');
+      final response = await _dio.get('https://api.escuelajs.co/api/v1/products');
       return response.data;
     } catch (e) {
       print('Error fetching products: $e');
@@ -12,7 +12,7 @@ class ProductService {
   }
   Future<dynamic> getProductById(int id) async {
     try {
-      final response = await _dio.get('https://fakestoreapi.com/products/$id');
+      final response = await _dio.get('https://api.escuelajs.co/api/v1/products/$id');
       return response.data;
     } catch (e) {
       print('Error fetching product: $e');
@@ -21,7 +21,7 @@ class ProductService {
   }
   Future<List<dynamic>> getProductsByCategory(String category) async {
     try {
-      final response = await _dio.get('https://fakestoreapi.com/products/category/$category');
+      final response = await _dio.get('https://api.escuelajs.co/api/v1/products/category/$category');
       return response.data;
     } catch (e) {
       print('Error fetching products by category: $e');

@@ -11,11 +11,7 @@ class Home extends ConsumerWidget {
 
     return Scaffold(
   
-
-      appBar: AppBar(
-        title: const Text("Home"),
-         
-      ),
+ 
 
       body: Center(
         child: Column(
@@ -29,7 +25,7 @@ class Home extends ConsumerWidget {
               "Inicia sesión o crea una cuenta para explorar nuestros productos",
               style: TextStyle(fontSize: 16),
             ),
- 
+ SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 context.go('/register');
@@ -43,6 +39,7 @@ class Home extends ConsumerWidget {
                 textStyle: TextStyle(color: const Color.fromARGB(255, 243, 241, 241),fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
+              SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 context.go('/login');
