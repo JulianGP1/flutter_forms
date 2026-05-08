@@ -31,10 +31,10 @@ final GoRouter router = GoRouter(
 
    
     if (session != null && (isGoingToLogin || isGoingToRegister)) {
-      return '/user';
+      return '/productos';
     }
      if (session != null && isGoingToHome) {
-    return '/user';
+    return '/productos';
   }
 
     return null;

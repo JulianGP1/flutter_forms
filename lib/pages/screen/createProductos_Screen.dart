@@ -38,8 +38,7 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
         },
       );
 
-      print(response.data);
-
+ 
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Producto creado')));
@@ -57,7 +56,7 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Crear producto')),
+    
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Form(

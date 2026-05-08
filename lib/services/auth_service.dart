@@ -45,7 +45,7 @@ class AuthService {
     .eq('nombre', nombre)
     .maybeSingle();
 
-  print("Resultado BD: $res");
+ 
       if (res == null) {
         return "Usuario no encontrado";
       }

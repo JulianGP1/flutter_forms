@@ -10,29 +10,8 @@ class UserScreen extends StatelessWidget {
  
 
     return Scaffold(
-      body: Center(
-        child: Card(
-          elevation: 5,
-         
-          child: InkWell(
-            borderRadius: BorderRadius.circular(12),
-            onTap: () {
-              
-              context.push('/createProducto');
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Icon(Icons.add_box, size: 40),
-                  SizedBox(width: 15),
-                  Text('Crear producto', style: TextStyle(fontSize: 18)),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+  body: const Center(),
+
+  );
   }
 }

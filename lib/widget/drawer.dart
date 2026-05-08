@@ -31,16 +31,10 @@ class AppDrawer extends ConsumerWidget {
             leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
-              context.go('/home');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.account_circle),
-            title: const Text('Productos'),
-            onTap: () {
               context.go('/productos');
             },
           ),
+         
  
         
           ListTile(

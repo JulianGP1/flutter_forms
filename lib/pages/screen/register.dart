@@ -48,7 +48,7 @@ final nombreController = TextEditingController();
       const SnackBar(content: Text('Usuario registrado')),
     );
  
-     context.go('/user');
+     context.go('/productos');
   }
 
   @override

@@ -6,6 +6,8 @@ import 'package:shop/shared/layout.dart';
 import 'package:shop/pages/screen/user_Screen.dart';
 import 'package:shop/pages/screen/productos_Screen.dart';
 import 'package:shop/pages/screen/createProductos_Screen.dart';
+import 'package:shop/pages/screen/produc_detail_screen.dart';
+import 'package:shop/models/product_model.dart';
 final routes = [
   
       GoRoute(
@@ -33,13 +35,13 @@ final routes = [
         title = 'Productos';
         break;
       case '/user':
-        title = 'Perfil';
+        title = 'Home';
         break;
         case '/createProducto':
         title = 'Crear Producto';
         break;
       default:
-        title = 'TShop';
+        title = 'Shop';
     }
 
     return Layout(
@@ -59,7 +61,15 @@ final routes = [
   GoRoute(
     path: '/createProducto',
     builder: (context, state) => const Createproductos_Screen(),
-  )
+  ),
+  GoRoute(
+  path: '/productDetail',
+  builder: (context, state) {
+    final product = state.extra as Product;
+
+    return ProductDetailScreen(product: product);
+  },
+),
 
     ],
   ),

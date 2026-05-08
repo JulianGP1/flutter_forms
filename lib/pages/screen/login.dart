@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
       const SnackBar(content: Text('Bienvenido')),
     );
 
-    context.go('/user');
+    context.go('/productos');
   }
 
   @override
@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('iniciar sesión'),
         
       ), 
       body: Padding(
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 30),
 
             SizedBox(
-              width: double.infinity,
+              width: 200,
 
               child: ElevatedButton(
                 onPressed: loading ? null : login,
@@ -100,13 +100,17 @@ class _LoginPageState extends State<LoginPage> {
                     : const Text('Iniciar sesión'),
               ),
             ),
+              const SizedBox(height: 20),
+             SizedBox(
+              width:300,
+              child: ElevatedButton(
+                onPressed: loading ? null : () => context.go('/register'),
 
-            TextButton(
-              onPressed: () {
-                context.go('/register');
-              },
-              child: const Text('Crear cuenta'),
-            )
+                child: loading
+                    ? const CircularProgressIndicator()
+                    : const Text('¿Aun no estas registrado? Crear cuenta'),
+              ),
+            ),
           ],
         ),
       ),

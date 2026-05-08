@@ -9,11 +9,10 @@ class Productos_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: FutureBuilder<List<Product>>(
-        future: ProductService()
-            .getProducts()
-            .then((data) => data.map((e) => Product.fromJson(e)).toList()),
+        future: ProductService().getProducts().then(
+          (data) => data.map((e) => Product.fromJson(e)).toList(),
+        ),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -33,27 +32,25 @@ class Productos_Screen extends StatelessWidget {
 
                 return ListTile(
                   leading: ClipRRect(
-  borderRadius: BorderRadius.circular(8),
-  child: product.images.isNotEmpty
-      ? Image.network(
-          product.images.first,
-          width: 60,
-          height: 60,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return const Icon(Icons.broken_image, size: 60);
-          },
-        )
-      : const Icon(Icons.image, size: 60),
-),
+                    borderRadius: BorderRadius.circular(8),
+                    child: product.images.isNotEmpty
+                        ? Image.network(
+                            product.images.first,
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return const Icon(Icons.broken_image, size: 60);
+                            },
+                          )
+                        : const Icon(Icons.image, size: 60),
+                  ),
                   title: Text(product.title),
                   subtitle: Text('\$${product.price}'),
                   onTap: () {
-                    context.go(
-                      '/product/${product.id}',
-                      extra: product.title,
-                    );
+                    context.go('/product/${product.id}', extra: product.title);
                   },
+                  
                 );
               },
             );
