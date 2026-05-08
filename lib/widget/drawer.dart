@@ -34,23 +34,15 @@ class AppDrawer extends ConsumerWidget {
               context.go('/home');
             },
           ),
-
-          ListTile(
-            leading: const Icon(Icons.shopping_cart),
-            title: const Text('Cart'),
-            onTap: () {
-              context.go('/cart');
-            },
-          ),
-
           ListTile(
             leading: const Icon(Icons.account_circle),
-            title: const Text('Profile'),
+            title: const Text('Productos'),
             onTap: () {
-              context.go('/profile');
+              context.go('/productos');
             },
           ),
-
+ 
+        
           ListTile(
             leading: const Icon(Icons.logout),
             title: const Text('Cerrar sesión'),
@@ -67,6 +59,7 @@ class AppDrawer extends ConsumerWidget {
               ref.read(themeProvider.notifier).toggleTheme();
             },
           ),
+              
         ],
       ),
     );

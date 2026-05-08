@@ -4,7 +4,7 @@ import 'package:shop/pages/screen/login.dart';
 import 'package:shop/pages/screen/register.dart';
 import 'package:shop/shared/layout.dart';
 import 'package:shop/pages/screen/user_screen.dart';
-
+import 'package:shop/pages/screen/productos_screen.dart';
 final routes = [
   GoRoute(
     path: '/login',
@@ -17,8 +17,12 @@ final routes = [
     path: '/user',
     builder: (context, state) => const UserScreen(),
   ),
+  GoRoute(
+    path: '/productos',
+    builder: (context, state) => const ProductosScreen(),
+  ),
 
- 
+  
   ShellRoute(
     builder: (context, state, child) {
       return Layout(

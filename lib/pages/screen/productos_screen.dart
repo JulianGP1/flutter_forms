@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shop/widget/drawer.dart';
 class ProductosScreen extends StatelessWidget {
   const ProductosScreen({super.key});
 
@@ -8,8 +10,19 @@ class ProductosScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Productos'),
       ),
+       drawer:AppDrawer(),
       body: const Center(
-        child: Text('Aquí se mostrarán los productos disponibles.'),
+        child:Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Buscar productos',
+                border: OutlineInputBorder(),
+              ),
+            )
+
+          ],
+        )
       ),
     );
   }
