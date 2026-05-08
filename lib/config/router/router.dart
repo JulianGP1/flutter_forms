@@ -6,7 +6,21 @@ import 'package:shop/shared/layout.dart';
 import 'package:shop/pages/screen/user_screen.dart';
 import 'package:shop/pages/screen/productos_screen.dart';
 final routes = [
-  GoRoute(
+  
+  
+  ShellRoute(
+    builder: (context, state, child) {
+      return Layout(
+        title: 'TShop',
+        child: child,
+      );
+    },
+    routes: [
+      GoRoute(
+        path: '/home',
+        builder: (context, state) => const Home(),
+      ),
+       GoRoute(
     path: '/login',
     builder: (context, state) => const LoginPage(),
   ),
@@ -22,19 +36,6 @@ final routes = [
     builder: (context, state) => const ProductosScreen(),
   ),
 
-  
-  ShellRoute(
-    builder: (context, state, child) {
-      return Layout(
-        title: 'TShop',
-        child: child,
-      );
-    },
-    routes: [
-      GoRoute(
-        path: '/home',
-        builder: (context, state) => const Home(),
-      ),
     ],
   ),
 ];

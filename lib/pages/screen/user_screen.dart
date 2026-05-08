@@ -16,7 +16,7 @@ class UserScreen extends StatelessWidget {
         
       ),
       
-        drawer:AppDrawer(),
+     
       body: Center(
         child: ElevatedButton.icon(
           onPressed: () async {
