@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:shop/models/product_model.dart';
 import 'package:shop/pages/home.dart';
 import 'package:shop/pages/screen/login.dart';
 import 'package:shop/pages/screen/register.dart';

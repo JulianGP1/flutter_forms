@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shop/services/auth_service.dart';
+ 
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final authService = AuthService();
+ 
 
     return Scaffold(
       body: Center(
