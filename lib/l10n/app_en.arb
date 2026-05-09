@@ -1,0 +1,11 @@
+{
+  "welcome": "WELCOME TO THE ONLINE STORE",
+  "welcome2": "Log in or create an account to explore our products",
+  "create": "Create a count",
+  "login": "Login",
+  "user":"User",
+  "password":"password",
+  "question":"Not registered yet? Create account",
+  "email":"Email",
+  "allreadyregister":"Already have an account? Log in"
+}

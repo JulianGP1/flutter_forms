@@ -1,159 +1,130 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shop/services/product_service.dart';
 import 'package:shop/models/product_model.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  final Product product;
+  final int id;
 
-  const ProductDetailScreen({
-    super.key,
-    required this.product,
-  });
+  const ProductDetailScreen({super.key, required this.id});
 
   @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+  State<ProductDetailScreen> createState() =>
+      ProductDetailScreenState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  int currentPage = 0;
+class ProductDetailScreenState
+    extends State<ProductDetailScreen> {
+  late Future<Product?> futureProduct;
+
+  @override
+  void initState() {
+    super.initState();
+    futureProduct =
+        ProductService().getProductById(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final product = widget.product;
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.title),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
-        ),
-      ),
+      
+         
+      body: FutureBuilder<Product?>(
+        future: futureProduct,
+        builder: (_, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+                child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return const Center(
+                child: Text("Error al cargar"));
+          } else if (!snapshot.hasData ||
+              snapshot.data == null) {
+            return const Center(
+                child: Text("No disponible"));
+          }
 
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          final data = snapshot.data!;
 
-       
-            Stack(
-              children: [
-                SizedBox(
-                  height: 300,
-                  child: PageView.builder(
-                    itemCount: product.images.length,
-                    onPageChanged: (index) {
-                      setState(() {
-                        currentPage = index;
-                      });
-                    },
-                    itemBuilder: (context, index) {
-                      return Image.network(
-                        product.images[index],
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                        errorBuilder: (context, error, stackTrace) {
-                          return const Center(
-                            child: Icon(Icons.broken_image, size: 80),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
-
-               
-                Positioned(
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      product.images.length,
-                      (index) => AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        width: currentPage == index ? 12 : 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: currentPage == index
-                              ? Colors.blue
-                              : Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+          return Center(
+            
+            child: Container(
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+             
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                
+                  ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(12),
+                    child: Image.network(
+                      data.images.isNotEmpty
+                          ? data.images.first
+                          : 'https://via.placeholder.com/150',
+                      height: 180,
+                      width: 150,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ],
-            ),
 
-            const SizedBox(height: 20),
+                  const SizedBox(width: 16),
 
-          
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                '\$${product.price}',
-                style: const TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                          CrossAxisAlignment.start,
+                      mainAxisSize:
+                          MainAxisSize.min,
+                      children: [
+                        Text(
+                          data.title,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight:
+                                FontWeight.bold,
+                      
+                          ),
+                        ),
+
+                        const SizedBox(height: 8),
+
+                        Text(
+                          "${data.category.name} - \$${data.price}",
+                          
+                        ),
+
+                        const SizedBox(height: 12),
+
+                        const Text(
+                          "Descripción:",
+                           
+                        ),
+                        Text(
+                          data.description,
+                           
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        OutlinedButton(
+                          onPressed: () {
+                            context.go('/productos');
+                          },
+                          child:
+                              const Text("Volver"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-
-            const SizedBox(height: 10),
-
-        
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                product.title,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-           
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Chip(
-                label: Text(product.category.name),
-              ),
-            ),
-
-            const SizedBox(height: 20),
- 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                product.description,
-                style: const TextStyle(fontSize: 16, height: 1.5),
-              ),
-            ),
-
-            const SizedBox(height: 30),
-
-           
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.shopping_cart),
-                  label: const Text('Agregar al carrito'),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

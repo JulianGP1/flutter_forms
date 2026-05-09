@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-
+import 'package:go_router/go_router.dart';
 class Createproductos_Screen extends StatefulWidget {
   const Createproductos_Screen({super.key});
 
@@ -49,7 +49,7 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
         context,
       ).showSnackBar(SnackBar(content: Text('Error: $e')));
     }
-
+    context.go('/productos');
     setState(() => loading = false);
   }
 

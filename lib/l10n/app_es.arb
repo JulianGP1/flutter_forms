@@ -1,0 +1,11 @@
+{
+  "welcome": "BIENVENIDO A LA TIENDA ONLINE",
+  "welcome2": "Inicia sesión o crea una cuenta para explorar nuestros productos",
+  "create": "Crear una cuenta",
+  "login":"Iniciar sesión",
+  "user":"Usuario",
+"password":"Contraseña",
+"question":"¿Aun no estas registrado? Crear cuenta",
+"email":"Correo",
+"allreadyregister":"¿Ya tienes cuenta? Inicia sesión"
+}

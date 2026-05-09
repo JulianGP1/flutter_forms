@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop/services/auth_service.dart';
-
+import 'package:shop/l10n/app_localizations.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
    final _nombreController = TextEditingController();
   final _passwordController = TextEditingController();
-
+ 
   final authService = AuthService();
 
   bool loading = false;
@@ -54,12 +54,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
+ final t = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('iniciar sesión'),
-        
-      ), 
+       
       body: Padding(
         padding: const EdgeInsets.all(20),
 
@@ -69,8 +66,8 @@ class _LoginPageState extends State<LoginPage> {
 
             TextField(
               controller:_nombreController,
-              decoration: const InputDecoration(
-                labelText: 'Usuario',
+              decoration:   InputDecoration(
+                labelText: t.user,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -81,8 +78,8 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Contraseña',
+              decoration:   InputDecoration(
+                labelText: t.password,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -97,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 child: loading
                     ? const CircularProgressIndicator()
-                    : const Text('Iniciar sesión'),
+                    :  Text(t.login),
               ),
             ),
               const SizedBox(height: 20),
@@ -108,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 child: loading
                     ? const CircularProgressIndicator()
-                    : const Text('¿Aun no estas registrado? Crear cuenta'),
+                    :  Text(t.question),
               ),
             ),
           ],

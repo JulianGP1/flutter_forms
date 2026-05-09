@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop/widget/drawer.dart';
 import 'package:go_router/go_router.dart ';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 class Layout extends StatelessWidget {
   final Widget child;
   final String title;
@@ -9,13 +11,16 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final session = Supabase.instance.client.auth.currentSession;
+    final isLoggedIn = session != null;
     return Scaffold(
       appBar: AppBar(
          title: Text(title),
       ),
           drawer:AppDrawer(),
       body: child,
-       bottomNavigationBar: BottomAppBar(
+      
+       bottomNavigationBar: isLoggedIn ? BottomAppBar(
   child: SizedBox(
     height: 120,
     child: Row(
@@ -59,7 +64,7 @@ class Layout extends StatelessWidget {
       ],
     ),
   ),
-),
+) : null,
     
     );
   }

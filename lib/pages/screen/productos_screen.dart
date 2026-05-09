@@ -11,7 +11,7 @@ class Productos_Screen extends StatelessWidget {
     return Scaffold(
       body: FutureBuilder<List<Product>>(
         future: ProductService().getProducts().then(
-          (data) => data.map((e) => Product.fromJson(e)).toList(),
+          (products) => products.where((p) => p.category.id == 1).toList(),
         ),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
