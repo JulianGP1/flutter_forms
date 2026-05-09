@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:shop/l10n/app_localizations.dart';
 import 'package:shop/services/users_service.dart';
 
 class UserScreen extends StatefulWidget {
@@ -31,6 +31,7 @@ class _UserScreenState extends State<UserScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     if (isLoading) {
       return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
@@ -50,8 +51,8 @@ class _UserScreenState extends State<UserScreen> {
         child: Column(
                mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Email: ${userData!['email']}'),
-            Text( 'Nombre: ${userData!['nombre'] ?? 'No disponible'}'),
+            Text(t.email + ': ${userData!['email']}'),
+            Text( t.user + ': ${userData!['nombre'] ?? 'No disponible'}'),
            CircleAvatar(
   radius: 50,
   backgroundImage: userData!['avatar_url'] != null

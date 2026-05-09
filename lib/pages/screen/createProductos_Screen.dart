@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shop/l10n/app_localizations.dart';
 class Createproductos_Screen extends StatefulWidget {
   const Createproductos_Screen({super.key});
 
@@ -33,7 +34,7 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
           "price": double.parse(priceController.text),
           "description": descriptionController.text,
           "images": [imageController.text],
-           "categoryId": 1,
+           "categoryId": 129,
      
         },
       );
@@ -55,6 +56,7 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Scaffold(
     
       body: SingleChildScrollView(
@@ -65,26 +67,26 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
             children: [
               TextFormField(
                 controller: titleController,
-                decoration: const InputDecoration(labelText: 'Nombre'),
+                decoration:   InputDecoration(labelText: t.name),
                 validator: (v) =>
-                    v == null || v.isEmpty ? 'Campo requerido' : null,
+                    v == null || v.isEmpty ? t.required_field: null,
               ),
 
               const SizedBox(height: 15),
 
               TextFormField(
                 controller: priceController,
-                decoration: const InputDecoration(labelText: 'Precio'),
+                decoration:   InputDecoration(labelText: t.price),
                 keyboardType: TextInputType.number,
                 validator: (v) =>
-                    v == null || v.isEmpty ? 'Campo requerido' : null,
+                    v == null || v.isEmpty ? t.required_field : null,
               ),
 
               const SizedBox(height: 15),
 
               TextFormField(
                 controller: descriptionController,
-                decoration: const InputDecoration(labelText: 'Descripción'),
+                decoration:   InputDecoration(labelText: t.description),
                 maxLines: 3,
               ),
 
@@ -92,9 +94,9 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
 
               TextFormField(
                 controller: imageController,
-                decoration: const InputDecoration(labelText: 'URL de imagen'),
+                decoration:   InputDecoration(labelText: t.image_url),
                 validator: (v) =>
-                    v == null || v.isEmpty ? 'Campo requerido' : null,
+                    v == null || v.isEmpty ? t.required_field : null,
               ),
 
               const SizedBox(height: 20),
@@ -103,7 +105,7 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
                 Image.network(
                   imageController.text,
                   height: 120,
-                  errorBuilder: (c, e, s) => const Text('Imagen inválida'),
+                  errorBuilder: (c, e, s) =>   Text(t.image_valid),
                 ),
 
               const SizedBox(height: 25),
@@ -113,8 +115,8 @@ class _Createproductos_ScreenState extends State<Createproductos_Screen> {
                 child: ElevatedButton(
                   onPressed: loading ? null : crearProducto,
                   child: loading
-                      ? const CircularProgressIndicator()
-                      : const Text('Crear producto'),
+                      ?   CircularProgressIndicator()
+                      :   Text(t.create),
                 ),
               ),
             ],

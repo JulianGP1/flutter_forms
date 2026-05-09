@@ -151,6 +151,78 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'¿Ya tienes cuenta? Inicia sesión'**
   String get allreadyregister;
+
+  /// No description provided for @createProduct.
+  ///
+  /// In es, this message translates to:
+  /// **'Producto Creado'**
+  String get createProduct;
+
+  /// No description provided for @name.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre del producto'**
+  String get name;
+
+  /// No description provided for @price.
+  ///
+  /// In es, this message translates to:
+  /// **'Precio del producto'**
+  String get price;
+
+  /// No description provided for @description.
+  ///
+  /// In es, this message translates to:
+  /// **'Description del producto'**
+  String get description;
+
+  /// No description provided for @image_url.
+  ///
+  /// In es, this message translates to:
+  /// **'Url de la imagen'**
+  String get image_url;
+
+  /// No description provided for @image_valid.
+  ///
+  /// In es, this message translates to:
+  /// **'imagen valida'**
+  String get image_valid;
+
+  /// No description provided for @required_field.
+  ///
+  /// In es, this message translates to:
+  /// **'campo requerido'**
+  String get required_field;
+
+  /// No description provided for @home.
+  ///
+  /// In es, this message translates to:
+  /// **'Inicio'**
+  String get home;
+
+  /// No description provided for @toggle_theme.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar tema'**
+  String get toggle_theme;
+
+  /// No description provided for @change_language.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar lenguaje'**
+  String get change_language;
+
+  /// No description provided for @log_out.
+  ///
+  /// In es, this message translates to:
+  /// **'Cerrar sesion'**
+  String get log_out;
+
+  /// No description provided for @user_data.
+  ///
+  /// In es, this message translates to:
+  /// **'Informacion del Usuario'**
+  String get user_data;
 }
 
 class _AppLocalizationsDelegate

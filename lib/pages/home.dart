@@ -73,14 +73,14 @@ class Home extends ConsumerWidget {
               onPressed: () {
                 ref.read(languajeProvider.notifier).toggleLanguage();
               },
-              child: const Text(" Cambiar idioma"),
+              child:   Text(t.change_language),
             ),
             SizedBox(height: 30),
             TextButton(
               onPressed: () {
                 ref.read(themeProvider.notifier).toggleTheme();
               },
-              child: const Text("Cambiar tema"),
+              child:   Text(t.toggle_theme),
               style: TextButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 119, 185, 230),
                 minimumSize: Size(150, 40),

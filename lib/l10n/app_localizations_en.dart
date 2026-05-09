@@ -34,4 +34,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get allreadyregister => 'Already have an account? Log in';
+
+  @override
+  String get createProduct => 'Product created';
+
+  @override
+  String get name => 'Name of the product';
+
+  @override
+  String get price => 'Price of the product';
+
+  @override
+  String get description => 'Description of the product';
+
+  @override
+  String get image_url => 'Url of the image';
+
+  @override
+  String get image_valid => 'valid image';
+
+  @override
+  String get required_field => 'required field';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get toggle_theme => 'Toggle theme';
+
+  @override
+  String get change_language => 'Change language';
+
+  @override
+  String get log_out => 'Log out';
+
+  @override
+  String get user_data => 'User data';
 }

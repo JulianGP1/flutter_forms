@@ -4,8 +4,20 @@
   "create": "Crear una cuenta",
   "login":"Iniciar sesión",
   "user":"Usuario",
-"password":"Contraseña",
+  "password":"Contraseña",
 "question":"¿Aun no estas registrado? Crear cuenta",
 "email":"Correo",
-"allreadyregister":"¿Ya tienes cuenta? Inicia sesión"
+"allreadyregister":"¿Ya tienes cuenta? Inicia sesión",
+"createProduct": "Producto Creado",
+"name":"Nombre del producto",
+ "price":"Precio del producto",
+  "description":"Description del producto",
+  "image_url":"Url de la imagen",
+    "image_valid":"imagen valida",
+"required_field":"campo requerido",
+"home":"Inicio",
+  "toggle_theme":"Cambiar tema",
+  "change_language":"Cambiar lenguaje",
+  "log_out":"Cerrar sesion",
+  "user_data":"Informacion del Usuario"
 }

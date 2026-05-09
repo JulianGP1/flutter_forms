@@ -7,5 +7,18 @@
   "password":"password",
   "question":"Not registered yet? Create account",
   "email":"Email",
-  "allreadyregister":"Already have an account? Log in"
+  "allreadyregister":"Already have an account? Log in",
+  "createProduct": "Product created",
+  "name":"Name of the product",
+  "price":"Price of the product",
+  "description":"Description of the product",
+  "image_url":"Url of the image",
+  "required_field":"required field",
+  "image_valid":"valid image",
+  "home":"Home",
+  "toggle_theme":"Toggle theme",
+  "change_language":"Change language",
+  "log_out":"Log out",
+  "user_data":"User data"
+  
 }

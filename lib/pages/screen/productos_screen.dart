@@ -10,8 +10,9 @@ class Productos_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder<List<Product>>(
+        
         future: ProductService().getProducts().then(
-          (products) => products.where((p) => p.category.id == 1).toList(),
+          (products) => products.where((p) => p.category.id != 0).toList(),
         ),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
